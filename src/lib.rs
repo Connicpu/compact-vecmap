@@ -237,9 +237,7 @@ impl<T> VecMap<T> {
 impl<T> Drop for VecMap<T> {
     fn drop(&mut self) {
         self.clear();
-        unsafe {
-            self.vec.dealloc_buffer();
-        }
+        // RawVec handles deallocating its own memory 😇 lol
     }
 }
 
